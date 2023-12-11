@@ -1199,7 +1199,6 @@ encoder_context_t *encoder_init(
  */
 int encoder_add_video_frame(uint8_t *frame, int size, int64_t timestamp, int isKeyframe)
 {
-//    cheese_print_log("encoder_add_video_frame");
     if (!video_ring_buffer)
         return -1;
 
@@ -1214,7 +1213,7 @@ int encoder_add_video_frame(uint8_t *frame, int size, int64_t timestamp, int isK
         set_video_pause_timestamp(0);
     }
 
-    int64_t pts = timestamp - reference_pts;
+    int64_t pts = timestamp - reference_pts;  //开始录像到当前的时间间隔，纳秒
 
     __LOCK_MUTEX(__PMUTEX);
     int flag = video_ring_buffer[video_write_index].flag;

@@ -118,7 +118,7 @@ uint64_t ns_time_monotonic()
 {
 	struct timespec now;
 
-	if(clock_gettime(CLOCK_MONOTONIC, &now) != 0)
+    if(clock_gettime(CLOCK_MONOTONIC, &now) != 0)  //系统重启到现在的时间
 	{
 		fprintf(stderr, "V4L2_CORE: ns_time_monotonic (clock_gettime) error: %s\n", strerror(errno));
 		return 0;
